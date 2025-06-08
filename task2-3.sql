@@ -15,8 +15,17 @@ SELECT name FROM artist
 WHERE name NOT LIKE '% %';
 
 --Название треков, которые содержат слово «мой» или «my».
+INSERT INTO track (name, duration, album) VALUES 
+('my own', 100, 1),
+('own my', 100, 1),
+('my', 100, 1),
+('oh my god', 100, 1);
+
 SELECT name FROM track
-WHERE name ILIKE '% мой %' OR name ILIKE '% my %';
+WHERE name ILIKE '% мой %' OR name ILIKE '% my %'
+OR name ILIKE '% мой' OR name ILIKE '% my'
+OR name ILIKE 'мой %' OR name ILIKE 'my %'
+OR name ILIKE 'мой' OR name ILIKE 'my';
 
 --Количество исполнителей в каждом жанре.
 SELECT name, COUNT(ag.artist_id) AS artist_count FROM genre g
